@@ -38,7 +38,7 @@ int on_return(struct pt_regs *ctx) {
     u32 pid;
     pid = bpf_get_current_pid_tgid();
     struct keyctl_read_args *args = keyctl_read_arguments.lookup(&pid);
-    // We didn't get a ready yet, could be another keyctl call.
+    // We didn't get a read yet, could be another keyctl call.
     if (!args) {
         return 0;
     }
